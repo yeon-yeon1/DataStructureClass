@@ -1,0 +1,39 @@
+# makefile 만들기 순서
+
+(실행할 때 사용할 명칭): test1.o (main 파일명).o
+	gcc -o (실행할 때 사용할 명칭) test1.o (main 파일명).o
+
+test1.o: test1.c test1.h
+	gcc -c test1.c
+
+(main 파일명).o: (main 파일명).c
+	gcc -c (main 파일명).c
+
+clean:
+	rm -rf *.o
+	rm -rf *.gch
+	rm -rf (실행할 때 사용할 명칭)
+
+
+
+# C 파일이 3개라면? (test1.c, test2.c, main.c)
+
+TARGET = (실행할 때 사용할 명칭)
+OBJS = test1.o test2.o main.o
+
+$(TARGET): $(OBJS)
+	gcc -o $(TARGET) $(OBJS)
+
+test1.o: test1.c test1.h
+	gcc -c test1.c
+
+test2.o: test2.c test2.h
+	gcc -c test2.c
+
+main.o: main.c
+	gcc -c main.c
+
+clean:
+	rm -rf *.o
+	rm -rf *.gch
+	rm -rf $(TARGET)

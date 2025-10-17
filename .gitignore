@@ -1,2 +1,6 @@
 .vscode/
 clone/
+
+.DS_Store
+*.h.gch
+*.o

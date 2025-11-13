@@ -44,6 +44,7 @@ int GetHiPriChildIDX(Heap *ph, int idx)
 	else
 	{
 		// 더 큰 우선순위를 가진 자식을 선택 (최대 힙)
+		// if (ph->heapArr[GetLChildIDX(idx)].pr < ph->heapArr[GetRChildIDX(idx)].pr)
 		if (ph->heapArr[GetLChildIDX(idx)].pr > ph->heapArr[GetRChildIDX(idx)].pr)
 			return GetLChildIDX(idx);
 		else
@@ -80,8 +81,8 @@ HData HDelete(Heap *ph)
 	int childIdx;
 	while ((childIdx = GetHiPriChildIDX(ph, parentIdx)))
 	{
-		// if (lastElem.pr >= ph->heapArr[childIdx].pr)
-		if (lastElem.pr <= ph->heapArr[childIdx].pr)
+		if (lastElem.pr >= ph->heapArr[childIdx].pr)
+			// if (lastElem.pr <= ph->heapArr[childIdx].pr)
 			break;
 
 		ph->heapArr[parentIdx] = ph->heapArr[childIdx];

@@ -5,6 +5,6 @@ int main(void)
 {
   int i = 5;
 
-  Print(i);
+  Print2(i);
   return 0;
 }
